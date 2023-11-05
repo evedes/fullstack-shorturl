@@ -40,4 +40,6 @@
                (values [["abc" "https://github.com/seancorfield/honeysql"]])
                (sql/format)))
   (insert-redirect! "xyz" "https://eduardovedes.com")
-  (get-url "xyz")) 
+  (get-url "xyz")
+  
+  #_) 
