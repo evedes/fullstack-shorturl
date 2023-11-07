@@ -1,0 +1,20 @@
+{
+  "name": "04.fullstack_shorturl",
+  "version": "1.0.0",
+  "description": "This is a fullstack shorturl app, built with clojure and clojurescript. It sits on top of the shorturl repo, which is only the backend part.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i global.css -o ./resources/public/assets/css/output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "shadow-cljs": "^2.25.10",
+    "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "react-dom": "^18.2.0"
+  }
+}

@@ -5,8 +5,14 @@
             [muuntaja.core :as m]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [shorturl.db :as db]
-            [shorturl.slug :refer [generate-slug]]))
+            [shorturl.slug :refer [generate-slug]]
+            [clojure.java.io :as io]))
 
+
+(defn index []
+  (slurp (io/resource "public/index.html")))
+
+(index)
 
 (defn redirect [req]
   (let [slug (get-in req [:path-params :slug])
@@ -19,7 +25,7 @@
   (let [url (get-in req [:body-params :url])
         slug (generate-slug)]
     (db/insert-redirect! slug url)
-    (r/response (str "created slug" slug))))
+    (r/response {:slug slug})))
 
 ;; Check how to build a server (can copy/paste from there)
 ;; https://github.comalndvz/vid4
@@ -31,7 +37,8 @@
      [":slug/" redirect]
      ["api/"
       ["redirect/" {:post create-redirect}]]
-     ["" {:handler (fn [req] {:body "Create redirect screen" :status 200})}]]
+     ["assets/*" (ring/create-resource-handler {:root "public/assets"})]
+     ["" {:handler (fn [req] {:body (index)})}]]
     {:data {:muuntaja m/instance
             :middleware [muuntaja/format-middleware]}})))
 

@@ -2,12 +2,9 @@
 
 (def charset "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-charset
 (comment
   (rand-nth charset)
-  (apply str (take 4 (repeatedly #(rand-nth charset))))
-  
-  #_)
+  (apply str (take 4 (repeatedly #(rand-nth charset)))))
 
 (defn generate-slug []
   (->> (repeatedly #(rand-nth charset))
@@ -16,8 +13,4 @@ charset
 
 
 (comment
-  (generate-slug)
-  
-  
-  
-  #_)
+  (generate-slug))

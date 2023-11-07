@@ -4,3 +4,6 @@ env.edn
 .cpcache
 .lsp
 .nrepl-port
+.shadow-cljs
+node_modules
+resources/public
